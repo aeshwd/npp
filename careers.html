@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers at NPP Unisex Salon</title>
+  <link rel="shortcut icon" href="assets/images/salon logo.png" type="image/x-icon">
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
+
+    /* Careers Section */
+    .section.careers {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .careers-header h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .careers-header p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* Filter Buttons */
+    .careers-filters {
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: none;
+      background-color: #4caf50;
+      color: #fff;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background-color: #357a38;
+    }
+
+    /* Job Listings */
+    .careers-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* Stylish Career Item Cards */
+.career-item {
+  flex: 1 1 300px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.career-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Add decorative highlight */
+.career-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  transition: height 0.3s;
+}
+
+.career-item:hover::before {
+  height: 10px;
+}
+
+/* Card Header Styling */
+.career-item h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4caf50;
+  padding-bottom: 5px;
+}
+
+/* List Styling */
+.career-item ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.career-item ul li {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+  position: relative;
+  padding-left: 25px;
+}
+
+.career-item ul li::before {
+  content: '✔';
+  color: #4caf50;
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Benefits Section */
+.career-item p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* Apply Button Styling */
+.apply-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.apply-btn:hover {
+  background: linear-gradient(90deg, #388e3c, #43a047);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* No Openings Message */
+.no-openings {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-top: 20px;
+}
+
+.no-openings a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no-openings a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .career-item {
+    flex: 1 1 100%;
+  }
+}
+
+/* Styling for the modal popup */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content p {
+  margin: 0 0 20px;
+}
+
+.close-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Careers at NPP Unisex Salon & Academy</h1>
+    <p>Join our team and grow your career in the beauty and wellness industry.</p>
+  </header>
+
+  <section class="section careers">
+    <div class="careers-header">
+      <h2>Open Positions</h2>
+      <p>Explore our current job openings or send us your resume for future opportunities.</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="careers-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="hair">Hair</button>
+      <button class="filter-btn" data-filter="massage">Massage</button>
+      
+    </div>
+
+    <!-- Positions -->
+    <div class="careers-list">
+      <!-- Therapy Massage Job -->
+      <div class="career-item" data-category="massage">
+        <h3>Therapy Massage Specialist</h3>
+        <ul>
+          <li><strong>Experience:</strong> 3 to 5 years</li>
+          <li><strong>Education:</strong> Minimum Graduation in any field</li>
+          <li><strong>Location:</strong> Must be a local citizen of Bathinda</li>
+          <li><strong>Age:</strong> 18 to 35 years old</li>
+          <li><strong>Expected Salary:</strong> Rs. 7,000 to Rs. 15,000 per month (based on experience)</li>
+        </ul>
+        <p><strong>Benefits:</strong></p>
+        <ul>
+          <li>Lunch and two-time snacks provided daily</li>
+          <li>3 free haircuts annually</li>
+          <li>1 free makeup session annually</li>
+          <li>Additional pay for extra work</li>
+        </ul>
+        <p><strong>Note:</strong> Shortlisted candidates must bring all educational and experience documents for the interview.</p>
+        <button class="apply-btn" id="contact-link">Apply Now</button>
+      </div>
+
+      <!-- No Openings Message -->
+      <div class="career-item no-openings" data-category="hair" style="display: none;">
+        <p>Sorry, no job openings for this position at the moment.</p>
+        <p>
+          But you can share your CV or resume with us via email at 
+          <a href="mailto:nppunisexsalon@gmail.com">nppunisexsalon@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Custom popup modal -->
+  <div class="modal" id="custom-popup" style="text-align: center;">
+    <div class="modal-content">
+      <img src="assets/images/salon logo.png" width="200px" style="margin-bottom: 30px;">
+      <h3 style="color: red; font-weight: 800; margin-bottom: 20px;"> Thanks for your interest!</h3>
+      <p style="line-height: 1.5;">
+        For this job, please call us at +91 9023459448 or visit our office - Shop No. 38 Ganpati Enclave Bathinda 15001. Please bring your CV with you.
+        
+      </p>
+      <a class="close-btn" id="close-btn">Close</a>
+    </div>
+  </div>
+
+  <script>
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const careerItems = document.querySelectorAll('.career-item');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Remove active class from all buttons
+        filterButtons.forEach((button) => button.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter job items
+        careerItems.forEach((item) => {
+          if (filter === 'all') {
+            item.style.display = item.classList.contains('no-openings') ? 'none' : 'block';
+          } else if (item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+<script>
+    // Get the modal and buttons
+    const contactLink = document.getElementById('contact-link');
+    const customPopup = document.getElementById('custom-popup');
+    const closeBtn = document.getElementById('close-btn');
+  
+    // Show the modal on click
+    contactLink.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent default anchor behavior
+      customPopup.style.display = 'flex'; // Show the modal
+    });
+  
+    // Hide the modal on clicking the close button
+    closeBtn.addEventListener('click', () => {
+      customPopup.style.display = 'none';
+    });
+  
+    // Hide the modal if the user clicks outside of the modal content
+    window.addEventListener('click', (event) => {
+      if (event.target === customPopup) {
+        customPopup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
